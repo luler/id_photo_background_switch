@@ -1,6 +1,6 @@
 <?php
 
-namespace Luler\Helpers;
+namespace Luler\IdPhotoBackgroundSwitch;
 
 class IdPhotoHelper
 {

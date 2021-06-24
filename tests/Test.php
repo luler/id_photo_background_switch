@@ -8,7 +8,7 @@
 
 namespace Test;
 
-use Luler\Helpers\IdPhotoHelper;
+use Luler\IdPhotoBackgroundSwitch\IdPhotoHelper;
 use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase

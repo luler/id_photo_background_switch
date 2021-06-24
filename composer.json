@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Luler\\Helpers\\": "src/Helpers"
+      "Luler\\IdPhotoBackgroundSwitch\\": "src/IdPhotoBackgroundSwitch"
     }
   },
   "autoload-dev": {
