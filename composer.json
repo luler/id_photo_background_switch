@@ -1,0 +1,33 @@
+{
+  "name": "luler/id_photo_background_switch",
+  "description": "证件照更换背景颜色助手工具",
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://github.com/luler/id_photo_background_switch",
+  "authors": [
+    {
+      "name": "luler",
+      "email": "1207032539@qq.com",
+      "homepage": "https://github.com/luler",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Luler\\Helpers\\": "src/Helpers"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\": "tests"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.5"
+  }
+}
