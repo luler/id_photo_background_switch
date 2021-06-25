@@ -15,6 +15,6 @@ class Test extends TestCase
 {
     public function testIdPhotoHelper()
     {
-        IdPhotoHelper::transformImage('test.jpg', 'res.jpg');
+        IdPhotoHelper::transformImage('test.jpg', 'res.jpg', IdPhotoHelper::WHITE_COLOR, [413, 295]);
     }
 }
