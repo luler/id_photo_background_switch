@@ -20,7 +20,7 @@ class IdPhotoHelper
         $background_color = self::positionBackgroupColor($old_image);
         imagecolortransparent($old_image, $background_color);//将识别到的背景颜色替换成透明
         imagecopymerge($new, $old_image, 0, 0, 0, 0, $old_image_width, $old_image_height, 100);//合并图片
-        imagepng($new, $to_image_path);//保存图片
+        imagejpeg($new, $to_image_path);//保存图片
         imagedestroy($old_image);//销毁
         imagedestroy($new);
     }
