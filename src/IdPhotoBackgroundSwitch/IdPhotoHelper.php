@@ -8,7 +8,7 @@ class IdPhotoHelper
     const BLUE_COLOR = [67, 142, 219];
     const WHITE_COLOR = [255, 255, 255];
     static $ignore_piexl = 0.01; //像素横向左右存在该比例无需替换颜色的像素时，无效该像素替换
-    static $distinct_piexl = 60; //rgb像素聚类增强时误差范围
+    static $distinct_piexl = 80; //rgb像素整体偏差范围
 
     public static function transformImage(string $from_image_path, string $to_image_path, array $color = self::RED_COLOR)
     {
@@ -45,10 +45,9 @@ class IdPhotoHelper
                 $r = ($rgb >> 16) & 0xff;//取R
                 $g = ($rgb >> 8) & 0xff;//取G
                 $b = $rgb & 0xff;//取B
-                //类似颜色统一增强,误差像素
-                if ($r - $distinct_piexl < $background_color_rgb[0] && $r + $distinct_piexl > $background_color_rgb[0] &&
-                    $g - $distinct_piexl < $background_color_rgb[1] && $g + $distinct_piexl > $background_color_rgb[1] &&
-                    $b - $distinct_piexl < $background_color_rgb[2] && $b + $distinct_piexl > $background_color_rgb[2]) {
+                //类似颜色统一增强,小于误差要求的像素都要增强
+                $distinct_piexl_result = abs($r - $background_color_rgb[0]) + abs($g - $background_color_rgb[1]) + abs($b - $background_color_rgb[2]);
+                if ($distinct_piexl_result < $distinct_piexl) {
                     $setpixels[] = 1;
                 } else {
                     $setpixels[] = 0;
@@ -93,7 +92,7 @@ class IdPhotoHelper
 
         $collect_rgbs = array_count_values($collect_rgbs); //颜色出现计数
         arsort($collect_rgbs); //计数排序
-        $rgb = array_key_first($collect_rgbs); //取出现最多的rgb
+        $rgb = key($collect_rgbs); //默认key数组指针位置的键名，默认数组指针在第一位，取出现最多的rgb
         $r = ($rgb >> 16) & 0xff;//取R
         $g = ($rgb >> 8) & 0xff;//取G
         $b = $rgb & 0xff;//取B
